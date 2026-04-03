@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cartão de Mensagem UniBB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<section class="form-container">
+    <h2>Confirmação Educador</h2>
+
+    <form id="mensagemForm">
+        <label>
+            Nome do Educador
+            <input type="text" id="nome" required />
+        </label>
+
+        <label>
+            Curso
+            <input type="text" id="curso" required />
+        </label>
+
+        <label>
+            Dia limite autorização
+            <input type="text" id="dia" required />
+        </label>
+
+        <label>
+            Dia prévio
+            <input type="text" id="diaPrevio" required />
+        </label>
+
+        <label>
+            Datas e horários do evento
+            <input type="text" id="datasEvento" required />
+        </label>
+
+        <label>
+            Local do evento
+            <textarea id="localEvento" rows="3" required></textarea>
+        </label>
+
+        <label>
+            Código FIP/Ponto Eletrônico
+            <input type="text" id="codigoFip" value="FIP 209" required />
+        </label>
+
+        <button type="submit">Gerar comunicado</button>
+    </form>
+</section>
+
+<section id="resultado" class="hidden">
+    <div class="resultado-grid">
+
+        <main class="container" id="cartao">
+            <header class="top">
+                <div class="logo">UniBB®</div>
+                <h1>Olá, <span id="nomeSpan"></span>!</h1>
+            </header>
+
+            <div class="copy">
+                C/C Gestor/a copiado/a para conhecimento, autorização e planejamento de ausência do/a colega
+            </div>
+
+            <p>
+                Recebemos sua manifestação de interesse e validamos sua atuação como educador titular no curso
+                <strong id="cursoSpan"></strong> – modalidade presencial, conforme dados abaixo.
+            </p>
+
+            <p>
+                A <span class="highlight">autorização</span> da atuação deve ser liberada pelo/a Gestor/a no
+                <span class="highlight">Portal do Aluno</span>, aba Gestor até o dia
+                <span class="highlight" id="diaSpan"></span>.
+                Clique <a href="https://www.unibb.com.br/">aqui</a> para ser direcionado ao portal do Aluno.
+            </p>
+
+            <div class="box">
+                <div class="box-title">CURSO:</div>
+                <div class="box-center" id="cursoBox"></div>
+            </div>
+
+            <div class="box">
+                <div class="box-title">DIA PRÉVIO:</div>
+                <div class="box-center" id="diaPrevioBox"></div>
+            </div>
+
+            <div class="box">
+                <div class="box-title">DATAS E HORÁRIOS DO EVENTO:</div>
+                <div class="box-center" id="datasEventoBox"></div>
+            </div>
+
+            <div class="box">
+                <div class="box-title">LOCAL DO EVENTO:</div>
+                <div class="box-center" id="localEventoBox"></div>
+            </div>
+
+            <div class="box">
+                <div class="box-title">CÓDIGO / SITUAÇÃO FIP PONTO ELETRÔNICO:</div>
+                <div class="box-center" id="codigoFipBox"></div>
+            </div>
+
+            <div class="obs-title">OBSERVAÇÃO:</div>
+            <p>Ausência deve ser registrada e despachada na Plataforma BB:</p>
+            <ul>
+                <li>Registro: Plataforma BB &gt; Pessoas &gt; Minha Visão &gt; Ausências e Afastamentos &gt; Planejamento de Ausências &gt; Adicionar Ausência &gt; Motivo: EDUCADOR – DIPES</li>
+                <li>Despacho: Plataforma BB &gt; Pessoas &gt; Minha Visão &gt; Ausências e Afastamentos &gt; Planejamento de Ausências</li>
+            </ul>
+
+            <footer class="footer">
+                Gepes BH<br>
+                Gepes Especializada<br>
+                Belo Horizonte
+            </footer>
+        </main>
+
+        <aside class="email-container">
+            <button id="btnImagem">Gerar imagem (.JPG)</button>
+            <button id="btnCopiarEmail">Copiar texto do e-mail</button>
+            <button id="btnAlterarCor">Alterar cor do convite</button>
+
+            <h3>Título do e-mail</h3>
+            <textarea id="emailCorpo" rows="1"></textarea>
+
+            <h3>Texto e descrição da imagem (acessibilidade)</h3>
+            <textarea id="descricaoImagem" rows="25"></textarea>
+        </aside>
+
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
