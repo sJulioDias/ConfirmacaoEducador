@@ -17,8 +17,9 @@ body {
 
 p {
     font-size: 14px;
-    line-height: 1.6;
-    margin: 10px 0;
+    line-height: 1.9;   /* aumenta o espaçamento entre linhas */
+    margin: 12px 0;     /* dá mais respiro entre parágrafos */
+    text-align: justify; /* justifica o texto */
 }
 
 /* FORMULÁRIO */
