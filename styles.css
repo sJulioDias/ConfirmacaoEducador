@@ -186,3 +186,12 @@ ul li::before {
         grid-template-columns: 1fr;
     }
 }
+
+#colorPicker {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+}
