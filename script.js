@@ -7,6 +7,14 @@ function value(id) {
     return document.getElementById(id).value;
 }
 
+// INPUT COLOR PARA PERSONALIZAÇÃO
+const colorPicker = document.getElementById("colorPicker");
+
+colorPicker.addEventListener("input", () => {
+    const corEscolhida = colorPicker.value;
+    cartao.style.background = corEscolhida;
+});
+
 // Função auxiliar para preencher texto em spans/divs
 function text(id, value) {
     document.getElementById(id).textContent = value;
