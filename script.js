@@ -7,6 +7,13 @@ function value(id) {
     return document.getElementById(id).value;
 }
 
+// Função para formatar data ISO (YYYY-MM-DD) em DD/MM/AAAA
+function formatarDataISOparaBR(dataISO) {
+    if (!dataISO) return "";
+    const [ano, mes, dia] = dataISO.split("-");
+    return `${dia}/${mes}/${ano}`;
+}
+
 // INPUT COLOR PARA PERSONALIZAÇÃO
 const colorPicker = document.getElementById("colorPicker");
 
@@ -32,19 +39,19 @@ form.addEventListener("submit", (e) => {
     const localEvento = value("localEvento");
     const codigoFip = value("codigoFip");
 
-    // Preenche os campos do cartão
+    // Preenche os campos do cartão com datas formatadas
     text("nomeSpan", nome);
     text("cursoSpan", curso);
-    text("diaSpan", dia);
+    text("diaSpan", formatarDataISOparaBR(dia));
     text("cursoBox", curso);
-    text("diaPrevioBox", diaPrevio);
+    text("diaPrevioBox", formatarDataISOparaBR(diaPrevio));
     text("datasEventoBox", datasEvento);
     text("localEventoBox", localEvento);
     text("codigoFipBox", codigoFip);
 
     // Gera conteúdo de e-mail e descrição acessível
-    gerarEmail(curso, dia, datasEvento, localEvento, codigoFip);
-    gerarDescricao(nome, curso, dia, diaPrevio, datasEvento, localEvento, codigoFip);
+    gerarEmail(curso, formatarDataISOparaBR(dia), datasEvento, localEvento, codigoFip);
+    gerarDescricao(nome, curso, formatarDataISOparaBR(dia), formatarDataISOparaBR(diaPrevio), datasEvento, localEvento, codigoFip);
 
     resultado.classList.remove("hidden");
     resultado.scrollIntoView({ behavior: "smooth" });
