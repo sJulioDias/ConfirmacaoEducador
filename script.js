@@ -57,12 +57,17 @@ form.addEventListener("submit", (e) => {
     resultado.scrollIntoView({ behavior: "smooth" });
 });
 
-// BOTÃO PARA GERAR IMAGEM
+// BOTÃO PARA GERAR IMAGEM CORRIGIDO
 const btnImagem = document.getElementById("btnImagem");
 btnImagem.addEventListener("click", () => {
+    // 1. Pegamos o estilo atual do cartão para saber qual cor o usuário escolheu
+    const estiloAtual = window.getComputedStyle(cartao);
+    const corDeFundo = estiloAtual.backgroundColor || estiloAtual.backgroundImage;
+
     html2canvas(cartao, {
         scale: 2,
-        backgroundColor: "#022c4a"
+        // 2. Passamos a cor atual para o html2canvas preencher os cantos arredondados
+        backgroundColor: corDeFundo 
     }).then(canvas => {
         const link = document.createElement("a");
         link.download = "cartao-unibb.jpg";
