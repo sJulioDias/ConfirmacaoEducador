@@ -129,6 +129,8 @@ Cartão digital UniBB com informações do curso e instruções:
 - Registro: Plataforma BB > Pessoas > Minha Visão > Ausências e Afastamentos > Planejamento de Ausências > Adicionar Ausência > Motivo: EDUCADOR – DIPES
 - Despacho: Plataforma BB > Pessoas > Minha Visão > Ausências e Afastamentos > Planejamento de Ausências
 
+Caso tenha necessidade de deslocamento e hospedagem, acesse o card em anexo para orientações.
+
 Atenciosamente,
 Gepes Especializada Belo Horizonte
 
