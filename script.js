@@ -114,7 +114,7 @@ function gerarDescricao(nome, curso, dia, diaPrevio, datasEvento, localEvento, c
     document.getElementById("descricaoImagem").value = `
 Olá, ${nome}!
 
-Recebemos sua manifestação de interesse e validamos sua atuação como educador titular no curso "${curso}".
+Recebemos sua manifestação de interesse e validamos sua atuação como educador/a titular no curso "${curso}".
 A autorização da atuação deve ser liberada pelo/a Gestor/a no Portal do Aluno, aba Gestor.
 
 📅 Dia limite para autorização: ${dia}
