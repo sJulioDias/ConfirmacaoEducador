@@ -90,10 +90,10 @@ btnCopiarEmail.addEventListener("click", () => {
 // BOTÃO PARA ALTERAR COR DO CARTÃO
 const btnAlterarCor = document.getElementById("btnAlterarCor");
 const cores = [
-    "linear-gradient(160deg, #022c4a, #04324f)", // padrão azul
-    "linear-gradient(160deg, #4f0630, #6a0432)", // vinho
-    "linear-gradient(160deg, #064f2f, #046a32)", // verde
-    "linear-gradient(160deg, #4f4606, #6a5a04)"  // dourado
+    "linear-gradient(160deg, #2c3e50, #000000)", // Grafite
+    "linear-gradient(160deg, #102a43, #243b55)", // Marinho
+    "linear-gradient(160deg, #0d324d, #1c1c1c)", // Petróleo
+    "linear-gradient(160deg, #bdc3c7, #2c3e50)"  // Prata/Escuro
 ];
 let indiceCor = 0;
 
