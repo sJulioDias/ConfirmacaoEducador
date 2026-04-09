@@ -112,6 +112,10 @@ Educador/a - Convite Atuação Curso ${curso} - Responder até ${dia}
 // FUNÇÃO PARA GERAR DESCRIÇÃO DA IMAGEM (ACESSIBILIDADE)
 function gerarDescricao(nome, curso, dia, diaPrevio, datasEvento, localEvento, codigoFip) {
     document.getElementById("descricaoImagem").value = `
+#Paratodosverem
+
+Cartão digital UniBB com informações de curso e instruções.
+
 Olá, ${nome}!
 
 Recebemos sua manifestação de interesse e validamos sua atuação como educador/a titular no curso "${curso}".
@@ -123,8 +127,6 @@ A autorização da atuação deve ser liberada pelo/a Gestor/a no Portal do Alun
 📍 Local: ${localEvento}
 📌 Código FIP/Ponto Eletrônico: ${codigoFip}
 
-#Paratodosverem
-Cartão digital UniBB com informações do curso e instruções:
 - Ausência deve ser registrada e despachada na Plataforma BB.
 - Registro: Plataforma BB > Pessoas > Minha Visão > Ausências e Afastamentos > Planejamento de Ausências > Adicionar Ausência > Motivo: EDUCADOR – DIPES
 - Despacho: Plataforma BB > Pessoas > Minha Visão > Ausências e Afastamentos > Planejamento de Ausências
