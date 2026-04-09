@@ -105,7 +105,7 @@ btnAlterarCor.addEventListener("click", () => {
 // FUNÇÃO PARA GERAR TÍTULO DO EMAIL
 function gerarEmail(curso, dia, datasEvento, localEvento, codigoFip) {
     document.getElementById("emailCorpo").value = `
-Comunicado: Autorização para atuação no curso ${curso} - até ${dia}
+Educador/a - Convite Atuação Curso ${curso} - até ${dia}
 `.trim();
 }
 
@@ -132,7 +132,7 @@ Cartão digital UniBB com informações do curso e instruções:
 Caso tenha necessidade de deslocamento e hospedagem, acesse o card em anexo para orientações.
 
 Atenciosamente,
-Gepes Especializada Belo Horizonte
+Gepes Especializada Educação e Seleção
 
 `.trim();
 }
