@@ -136,3 +136,27 @@ Gepes Especializada Belo Horizonte
 
 `.trim();
 }
+
+const btnEmail = document.getElementById("btnEmail");
+
+btnEmail.addEventListener("click", () => {
+    html2canvas(cartao, { scale: 2 }).then(canvas => {
+        // Converte para Base64
+        const imgData = canvas.toDataURL("image/png");
+
+        // Copia a imagem para a área de transferência
+        canvas.toBlob(blob => {
+            const item = new ClipboardItem({ "image/png": blob });
+            navigator.clipboard.write([item]).then(() => {
+                alert("Imagem copiada! Agora cole no corpo do e-mail.");
+            });
+        });
+
+        // Cria link mailto com assunto e corpo
+        const assunto = document.getElementById("emailCorpo").value || "Comunicado UniBB";
+        const corpo = document.getElementById("descricaoImagem").value || "Segue comunicado em anexo.";
+
+        const mailtoLink = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+        window.location.href = mailtoLink;
+    });
+});
