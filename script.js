@@ -105,7 +105,7 @@ btnAlterarCor.addEventListener("click", () => {
 // FUNÇÃO PARA GERAR TÍTULO DO EMAIL
 function gerarEmail(curso, dia, datasEvento, localEvento, codigoFip) {
     document.getElementById("emailCorpo").value = `
-Educador/a - Convite Atuação Curso ${curso} - até ${dia}
+Educador/a - Convite Atuação Curso ${curso} - Responder até ${dia}
 `.trim();
 }
 
