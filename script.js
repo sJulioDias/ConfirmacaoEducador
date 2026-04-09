@@ -113,7 +113,6 @@ Educador/a - Convite Atuação Curso ${curso} - Responder até ${dia}
 function gerarDescricao(nome, curso, dia, diaPrevio, datasEvento, localEvento, codigoFip) {
     document.getElementById("descricaoImagem").value = `
 #Paratodosverem
-
 Cartão digital UniBB com informações de curso e instruções.
 
 Olá, ${nome}!
