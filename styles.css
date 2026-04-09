@@ -71,7 +71,7 @@ p {
 .container {
     background: linear-gradient(160deg, #022c4a, #04324f);
     padding: 24px 20px 40px;
-    border-radius: 16px;
+    /* border-radius: 16px; */
     position: relative;
 }
 
