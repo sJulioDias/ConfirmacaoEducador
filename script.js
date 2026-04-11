@@ -36,8 +36,12 @@ form.addEventListener("submit", (e) => {
     const dia = value("dia");
     const diaPrevio = value("diaPrevio");
     const datasEvento = value("datasEvento");
-    const localEvento = value("localEvento");
+    const enderecoSala = value("enderecoSala");
+    const cidadeUf = value("cidadeUf");
     const codigoFip = value("codigoFip");
+
+    // Concatena endereço e cidade/UF
+    const localConcatenado = `${enderecoSala} - ${cidadeUf}`;
 
     // Preenche os campos do cartão com datas formatadas
     text("nomeSpan", nome);
@@ -46,27 +50,25 @@ form.addEventListener("submit", (e) => {
     text("cursoBox", curso);
     text("diaPrevioBox", formatarDataISOparaBR(diaPrevio));
     text("datasEventoBox", datasEvento);
-    text("localEventoBox", localEvento);
+    text("localEventoBox", localConcatenado);
     text("codigoFipBox", codigoFip);
 
     // Gera conteúdo de e-mail e descrição acessível
-    gerarEmail(curso, formatarDataISOparaBR(dia), datasEvento, localEvento, codigoFip);
-    gerarDescricao(nome, curso, formatarDataISOparaBR(dia), formatarDataISOparaBR(diaPrevio), datasEvento, localEvento, codigoFip);
+    gerarEmail(curso, formatarDataISOparaBR(dia), datasEvento, localConcatenado, codigoFip, cidadeUf);
+    gerarDescricao(nome, curso, formatarDataISOparaBR(dia), formatarDataISOparaBR(diaPrevio), datasEvento, localConcatenado, codigoFip);
 
     resultado.classList.remove("hidden");
     resultado.scrollIntoView({ behavior: "smooth" });
 });
 
-// BOTÃO PARA GERAR IMAGEM CORRIGIDO
+// BOTÃO PARA GERAR IMAGEM
 const btnImagem = document.getElementById("btnImagem");
 btnImagem.addEventListener("click", () => {
-    // 1. Pegamos o estilo atual do cartão para saber qual cor o usuário escolheu
     const estiloAtual = window.getComputedStyle(cartao);
     const corDeFundo = estiloAtual.backgroundColor || estiloAtual.backgroundImage;
 
     html2canvas(cartao, {
         scale: 2,
-        // 2. Passamos a cor atual para o html2canvas preencher os cantos arredondados
         backgroundColor: corDeFundo 
     }).then(canvas => {
         const link = document.createElement("a");
@@ -90,10 +92,10 @@ btnCopiarEmail.addEventListener("click", () => {
 // BOTÃO PARA ALTERAR COR DO CARTÃO
 const btnAlterarCor = document.getElementById("btnAlterarCor");
 const cores = [
-    "linear-gradient(160deg, #2c3e50, #000000)", // Grafite
-    "linear-gradient(160deg, #102a43, #243b55)", // Marinho
-    "linear-gradient(160deg, #0d324d, #1c1c1c)", // Petróleo
-    "linear-gradient(160deg, #bdc3c7, #2c3e50)"  // Prata/Escuro
+    "linear-gradient(160deg, #2c3e50, #000000)", 
+    "linear-gradient(160deg, #102a43, #243b55)", 
+    "linear-gradient(160deg, #0d324d, #1c1c1c)", 
+    "linear-gradient(160deg, #bdc3c7, #2c3e50)"  
 ];
 let indiceCor = 0;
 
@@ -102,15 +104,15 @@ btnAlterarCor.addEventListener("click", () => {
     cartao.style.background = cores[indiceCor];
 });
 
-// FUNÇÃO PARA GERAR TÍTULO DO EMAIL
-function gerarEmail(curso, dia, datasEvento, localEvento, codigoFip) {
+// FUNÇÃO PARA GERAR TÍTULO DO EMAIL (agora inclui cidade/UF)
+function gerarEmail(curso, dia, datasEvento, localConcatenado, codigoFip, cidadeUf) {
     document.getElementById("emailCorpo").value = `
-Educador/a - Convite Atuação Curso ${curso} - Responder até ${dia}
+Educador/a - Convite Atuação Curso ${curso} - ${cidadeUf} - Responder até ${dia}
 `.trim();
 }
 
 // FUNÇÃO PARA GERAR DESCRIÇÃO DA IMAGEM (ACESSIBILIDADE)
-function gerarDescricao(nome, curso, dia, diaPrevio, datasEvento, localEvento, codigoFip) {
+function gerarDescricao(nome, curso, dia, diaPrevio, datasEvento, localConcatenado, codigoFip) {
     document.getElementById("descricaoImagem").value = `
 #Paratodosverem
 Cartão digital UniBB com informações de curso e instruções.
@@ -123,7 +125,7 @@ A autorização da atuação deve ser liberada pelo/a Gestor/a no Portal do Alun
 📅 Dia limite para autorização: ${dia}
 📅 Dia prévio: ${diaPrevio}
 📅 Datas e horários do evento: ${datasEvento}
-📍 Local: ${localEvento}
+📍 Local: ${localConcatenado}
 📌 Código FIP/Ponto Eletrônico: ${codigoFip}
 
 - Ausência deve ser registrada e despachada na Plataforma BB.
@@ -141,18 +143,13 @@ Gepes Especializada Educação e Seleção
 const btnEmail = document.getElementById("btnEmail");
 
 btnEmail.addEventListener("click", () => {
-    // Usando o elemento 'cartao' (certifique-se de que ele existe no escopo)
     html2canvas(cartao, { scale: 2 }).then(canvas => {
-        
-        // 1. Primeiro gera o Blob para cópia
         canvas.toBlob(blob => {
             const item = new ClipboardItem({ "image/png": blob });
 
-            // 2. Tenta copiar para a área de transferência
             navigator.clipboard.write([item]).then(() => {
                 alert("Imagem copiada! Agora cole no corpo do e-mail.");
 
-                // 3. Só abre o e-mail APÓS a confirmação da cópia
                 const assunto = document.getElementById("emailCorpo").value || "Comunicado UniBB";
                 const corpo = document.getElementById("descricaoImagem").value || "Segue comunicado em anexo.";
 
@@ -160,7 +157,6 @@ btnEmail.addEventListener("click", () => {
                 window.location.href = mailtoLink;
 
             }).catch(err => {
-                // 4. Tratamento de erro caso o navegador bloqueie a cópia
                 console.error("Erro ao copiar imagem: ", err);
                 alert("Não foi possível copiar a imagem automaticamente.");
             });
