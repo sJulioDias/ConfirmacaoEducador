@@ -164,7 +164,16 @@ ul li::before {
     text-align: center;
     margin-top: 40px;
     font-size: 15px;
-    color: #f6f632;
+}
+
+.footer-linha-1 {
+    color: #f6f632; /* Amarelo */
+    font-weight: bold; /* Negrito */
+}
+
+.footer-linha-2 {
+    color: #ffffff; /* Branco */
+    font-weight: normal; /* Garante que não herde negrito */
 }
 
 /* EMAIL */
