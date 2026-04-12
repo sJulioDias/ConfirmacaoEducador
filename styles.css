@@ -17,9 +17,9 @@ body {
 
 p {
     font-size: 14px;
-    line-height: 1.9;   /* aumenta o espaçamento entre linhas */
-    margin: 12px 0;     /* dá mais respiro entre parágrafos */
-    text-align: justify; /* justifica o texto */
+    line-height: 1.9;
+    margin: 12px 0;
+    text-align: justify;
 }
 
 /* FORMULÁRIO */
@@ -71,16 +71,28 @@ p {
 .container {
     background: linear-gradient(160deg, #022c4a, #04324f);
     padding: 24px 20px 40px;
-    /* border-radius: 16px; */
     position: relative;
 }
 
-.logo {
+/* NOVO POSICIONAMENTO DA LOGO E TEXTO JUNTOS */
+.header-right {
     position: absolute;
     top: 20px;
     right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-text {
     color: #f6f632;
     font-weight: bold;
+    font-size: 14px;
+}
+
+.logo-img {
+    width: 20px; /* Ajuste o tamanho se preferir maior ou menor */
+    height: auto;
 }
 
 h1 {
@@ -194,9 +206,4 @@ ul li::before {
     height: 40px;
     cursor: pointer;
     border: none;
-}
-
-img {
-    width: 4%;
-
 }
