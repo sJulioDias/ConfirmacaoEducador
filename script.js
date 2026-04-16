@@ -71,10 +71,22 @@ btnImagem.addEventListener("click", () => {
         scale: 2,
         backgroundColor: corDeFundo 
     }).then(canvas => {
+        // --- DOWNLOAD ---
         const link = document.createElement("a");
         link.download = "cartao-unibb.jpg";
         link.href = canvas.toDataURL("image/jpeg", 0.95);
         link.click();
+
+        // --- CÓPIA PARA ÁREA DE TRANSFERÊNCIA ---
+        canvas.toBlob(blob => {
+            const item = new ClipboardItem({ "image/png": blob });
+            navigator.clipboard.write([item]).then(() => {
+                alert("Imagem copiada para a área de transferência!");
+            }).catch(err => {
+                console.error("Erro ao copiar imagem: ", err);
+                alert("Não foi possível copiar a imagem automaticamente.");
+            });
+        });
     });
 });
 
